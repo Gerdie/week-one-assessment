@@ -341,7 +341,6 @@ def reverse_list_in_place(items):
         swap = items[index]
         items[index] = items[-index - 1]
         items[-index - 1] = swap
-    return
 
 
 def duplicates(items):
