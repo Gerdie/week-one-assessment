@@ -187,6 +187,14 @@ sign, parity = sign_and_par[0], sign_and_par[1]
 #    job title defaults to "Engineer" if a job title is not passed in.
 #    Return the person's title and name in one string.
 
+
+def full_title(name, title="Engineer"):
+    """ Returns name and title as string. """
+
+    result = "{!s} {!s}".format(title, name)
+
+    return result
+
 # 2. Given a recipient name & job title and a sender name,
 #    print the following letter:
 #
@@ -195,6 +203,29 @@ sign, parity = sign_and_par[0], sign_and_par[1]
 #
 #    Use the function from #1 to construct the full title for the letter's
 #    greeting.
+
+
+# def write_letter(sender, recipient_name, recipient_title="Engineer"):
+#     """ Prints letter given recipient name & title and sender name
+
+#     Relies on function full_title """
+
+#     recipient = full_title(recipient_name, recipient_title)
+
+#     print "Dear {}, I think you are amazing! Sincerely, {!s}.".format(recipient, sender)
+
+# I thought the above function was better because it accounted for a possible
+# default variable if the recipient title was not included. But the order of
+# parameters (default is last) wasn't consistent with the order passed into the doctest.
+
+def write_letter(recipient_name, recipient_title, sender):
+    """ Prints letter given recipient name & title and sender name
+
+    Relies on function full_title """
+
+    recipient = full_title(recipient_name, recipient_title)
+
+    print "Dear {}, I think you are amazing! Sincerely, {!s}".format(recipient, sender)
 
 
 #####################################################################
