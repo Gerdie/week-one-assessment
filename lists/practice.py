@@ -18,7 +18,8 @@ def print_list(items):
         9
     """
 
-    print "the wrong thing"
+    for item in items:
+        print item
 
 
 def long_words(words):
@@ -37,8 +38,9 @@ def long_words(words):
         >>> long_words(["all", "are", "tiny"])
         []
     """
+    long_words_list = [word for word in words if len(word) > 4]
 
-    return ['the wrong thing']
+    return long_words_list
 
 
 def n_long_words(words, n):
@@ -56,7 +58,7 @@ def n_long_words(words, n):
         ['apples', 'bananas']
     """
 
-    return ['the wrong thing']
+    return [word for word in words if len(word) > n]
 
 
 def smallest_int(numbers):
@@ -77,8 +79,16 @@ def smallest_int(numbers):
         >>> smallest_int([]) is None
         True
     """
+    if not numbers:
+        return None
 
-    return 100
+    start = numbers[0]
+
+    for number in numbers:
+        if number < start:
+            start = number
+
+    return start
 
 
 def largest_int(numbers):
@@ -100,7 +110,14 @@ def largest_int(numbers):
         True
     """
 
-    return 0
+    if numbers:
+        largest = numbers[0]
+        for number in numbers:
+            if number > largest:
+                largest = number
+        return largest
+    else:
+        return None
 
 
 def halvesies(numbers):
@@ -118,7 +135,7 @@ def halvesies(numbers):
         [0.5, 2.5]
     """
 
-    return []
+    return [(lambda x:x/2.0)(number) for number in numbers]
 
 
 def word_lengths(words):
@@ -129,8 +146,9 @@ def word_lengths(words):
         >>> word_lengths(["hello", "hey", "hello", "spam"])
         [5, 3, 5, 4]
     """
-
-    return []
+    for index, word in enumerate(words):
+        words[index] = len(word)
+    return words
 
 
 def sum_numbers(numbers):
@@ -149,8 +167,12 @@ def sum_numbers(numbers):
         >>> sum_numbers([])
         0
     """
+    sum = 0
 
-    return None
+    for number in numbers:
+        sum += number
+
+    return sum
 
 
 def mult_numbers(numbers):
@@ -173,7 +195,12 @@ def mult_numbers(numbers):
         1
     """
 
-    return None
+    product = 1
+
+    for number in numbers:
+        product *= number
+
+    return product
 
 
 def join_strings(words):
@@ -193,7 +220,12 @@ def join_strings(words):
         ''
     """
 
-    return "Not the right thing"
+    all_strings = ''
+
+    for word in words:
+        all_strings += word
+
+    return all_strings
 
 
 def average(numbers):
@@ -216,7 +248,16 @@ def average(numbers):
     a feel free to provide a good solution here.)
     """
 
-    return 0
+    sum = 0
+
+    for number in numbers:
+        sum += number
+
+    try:
+        return float(sum) / len(numbers)
+
+    except ZeroDivisionError:
+        print "Can't divide by zero! Womp womp."
 
 
 def join_strings_with_comma(words):
@@ -236,7 +277,15 @@ def join_strings_with_comma(words):
         'Pretzel'
     """
 
-    return ""
+    joined_strings = ""
+
+    for index in xrange(len(words)):
+        if index > 0:
+            joined_strings += ", " + words[index]
+        else:
+            joined_strings += words[index]
+
+    return joined_strings
 
 
 def reverse_list(items):
