@@ -404,9 +404,12 @@ def find_letter_indices(words, letter):
     """
     index_list = []
 
-    for index, word in enumerate(words):
+    for word in words:
         if letter in word:
-            index_list.append(index)
+            for index, each_letter in enumerate(word):
+                if each_letter == letter:
+                    index_list.append(index)
+                    break
         else:
             index_list.append(None)
 
