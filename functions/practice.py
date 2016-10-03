@@ -175,9 +175,10 @@ def sign_and_parity(num):
 
     return result
 
-sign_and_par = sign_and_parity(4)
 
-sign, parity = sign_and_par[0], sign_and_par[1]
+parity, sign = sign_and_parity(4)[0], sign_and_parity(4)[1]
+
+print sign, parity
 
 ################################################################################
 # PART TWO
@@ -191,7 +192,7 @@ sign, parity = sign_and_par[0], sign_and_par[1]
 def full_title(name, title="Engineer"):
     """ Returns name and title as string. """
 
-    result = "{!s} {!s}".format(title, name)
+    result = "{!s} {!s}".format(title, name)  # forces string if input != string
 
     return result
 
